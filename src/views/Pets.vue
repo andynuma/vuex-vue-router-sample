@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- {{ $route.params.species }}
-    {{ $route.params.id }} -->
+    {{ $route.params.id }}-->
     <!-- {{ pet().name }} -->
     <h1>{{ animal.name }} ({{ this.$route.params.species }})</h1>
     <p>Age:{{ animal.age }} years old</p>
@@ -10,16 +10,16 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
 
 export default {
   data() {
     return {
-      animal: {},
+      animal: {}
     };
   },
   computed: {
-    ...mapState(['cats', 'dogs']),
+    ...mapState(["cats", "dogs"])
     // cats() {
     //   return this.$store.state.cats;
     // },
@@ -28,6 +28,6 @@ export default {
     //  [cats][1]
     const animal = this[this.$route.params.species][this.$route.params.id];
     this.animal = animal;
-  },
+  }
 };
 </script>
