@@ -1,26 +1,22 @@
 <template>
   <div>
-    <h1>Cats for Adoption</h1>
-    <b-table :fields="fields" :items="cats">
-      <template v-slot:cell(name)="data">
-        <!-- `data.value` is the value after formatted by the Formatter -->
-        <router-link :to="`/pets/cats/${data.index}`">{{
-          data.value
-        }}</router-link>
-      </template>
-    </b-table>
+    <PetTable :pets="cats" species="Cats" />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState } from "vuex";
+import PetTable from "../components/PetTable";
 
 export default {
   data() {
     return {};
   },
-  computed: {
-    ...mapState(['cats']),
+  components: {
+    PetTable
   },
+  computed: {
+    ...mapState(["cats"])
+  }
 };
 </script>

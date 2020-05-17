@@ -1,6 +1,8 @@
 <template>
   <div class="home">
     <h1>Adaptp a new .</h1>
+    <p>All Animal Count: {{ animalsCount }}</p>
+    <p>All Cats : {{ getAllCats.length }}</p>
     <button class="btn btn-primary" @click="togglePetForm">Add new Pet</button>
 
     <b-form @submit.prevent="handleSubmit" v-if="showPetForm">
@@ -30,7 +32,7 @@
 
 <script>
 // @ is an alias to /src
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "Home",
@@ -43,6 +45,9 @@ export default {
         species: null
       }
     };
+  },
+  computed: {
+    ...mapGetters(["animalsCount", "getAllCats"])
   },
   methods: {
     ...mapActions(["addPet"]),
@@ -59,7 +64,11 @@ export default {
         }
       };
       this.addPet(payload);
-      // console.log(payload);
+      this.formData = {
+        name: "",
+        age: 0,
+        species: null
+      };
     }
   }
 };
